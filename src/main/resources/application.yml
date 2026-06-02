@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: butik-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/butikdb
+    username: admin
+    password: 123456
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8080
