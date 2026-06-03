@@ -1,5 +1,6 @@
 package com.butik.butikbackend.entity;
 
+import com.butik.butikbackend.entity.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

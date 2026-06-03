@@ -55,4 +55,9 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerRepository.delete(customer);
     }
+
+    @Override
+    public List<Customer> getCustomersByGender(String gender) {
+        return customerRepository.findByGender(gender);
+    }
 }

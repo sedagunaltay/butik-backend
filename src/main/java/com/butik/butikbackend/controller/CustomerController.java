@@ -1,5 +1,7 @@
 package com.butik.butikbackend.controller;
 
+import com.butik.butikbackend.mapper.CustomerMapper;
+import com.butik.butikbackend.dto.CustomerDto;
 import com.butik.butikbackend.entity.Customer;
 import com.butik.butikbackend.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +43,19 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
+
     }
+    @GetMapping("/dto/{id}")
+    public CustomerDto getCustomerDto(@PathVariable Long id) {
+
+        Customer customer = customerService.getCustomerById(id);
+
+        return CustomerMapper.toDto(customer);
+    }
+
+    @GetMapping("/gender/{gender}")
+    public List<Customer> getCustomersByGender(@PathVariable String gender) {
+        return customerService.getCustomersByGender(gender);
+    }
+
 }
