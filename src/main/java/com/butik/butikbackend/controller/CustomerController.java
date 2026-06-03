@@ -3,6 +3,7 @@ package com.butik.butikbackend.controller;
 import com.butik.butikbackend.entity.Customer;
 import com.butik.butikbackend.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer saveCustomer(@RequestBody Customer customer) {
+    public Customer saveCustomer(@Valid @RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
     }
 
