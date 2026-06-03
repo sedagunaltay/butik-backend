@@ -1,5 +1,6 @@
 package com.butik.butikbackend.service.impl;
 
+import com.butik.butikbackend.exception.ResourceNotFoundException;
 import com.butik.butikbackend.entity.Customer;
 import com.butik.butikbackend.repository.CustomerRepository;
 import com.butik.butikbackend.service.CustomerService;
@@ -29,14 +30,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCustomerById(Long id) {
         return customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
     }
 
     @Override
     public Customer updateCustomer(Long id, Customer customer) {
 
         Customer existingCustomer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         existingCustomer.setFirstName(customer.getFirstName());
         existingCustomer.setLastName(customer.getLastName());
@@ -51,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Long id) {
 
         Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         customerRepository.delete(customer);
     }
